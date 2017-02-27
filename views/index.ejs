@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <form action="/path" method="get">
+        <label>
+            Origem
+            <input name="origem" type="text"/>
+        </label>
+        <label>
+            Destino
+            <input name="destino" type="text"/>
+        </label>
+        <input type="submit" value="Buscar"/>
+    </form>
+    <% if(typeof path !== 'undefined') { %>
+    <ul>
+      <% path.forEach(function(article) { %>
+        <li>
+          <%= article %>
+        </li>
+      <% }); %>
+    </ul>
+    <% } %>
+  </body>
+</html>
