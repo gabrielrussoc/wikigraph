@@ -17,8 +17,7 @@ WikiGraph::WikiGraph(std::string pages_path, std::string links_path) {
     if(pages.is_open()) {
         while(std::getline(pages, line)) id[line] = c++;
     } else {
-        std::cerr << "Falha na leitura das paginas\n";
-        exit(-1);
+        throw std::runtime_error(std::string("Falha na leitura das paginas"));
     }
 
     this->V = c;
@@ -31,8 +30,7 @@ WikiGraph::WikiGraph(std::string pages_path, std::string links_path) {
         int u, v;
         while(links >> u >> v) add_arc(u, v);
     } else {
-        std::cerr << "Falha na leitura dos links\n";
-        exit(-1);
+        throw std::runtime_error(std::string("Falha na leitura dos links"));
     }
 
     pages.close();

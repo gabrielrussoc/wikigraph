@@ -1,0 +1,1 @@
+cmd_Release/wiki_graph_node.node := ln -f "Release/obj.target/wiki_graph_node.node" "Release/wiki_graph_node.node" 2>/dev/null || (rm -rf "Release/wiki_graph_node.node" && cp -af "Release/obj.target/wiki_graph_node.node" "Release/wiki_graph_node.node")
