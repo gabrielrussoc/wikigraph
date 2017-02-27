@@ -1,7 +1,7 @@
 var express = require('express')
 var router = express.Router();
 
-const graph = require('../wikigraph')
+const graph = require('../src/js/wikigraph')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
