@@ -10,11 +10,11 @@
     <form action="/path" method="get">
         <label>
             Origem
-            <input name="origem" type="text"/>
+            <input id="from" name="from" type="text"/>
         </label>
         <label>
             Destino
-            <input name="destino" type="text"/>
+            <input id="to" name="to" type="text"/>
         </label>
         <input type="submit" value="Buscar"/>
     </form>
@@ -28,4 +28,7 @@
     </ul>
     <% } %>
   </body>
+  <script src="/javascripts/jquery-3.1.1.min.js"></script>
+  <script src="/javascripts/jquery.autocomplete.js"></script>
+  <script src="/javascripts/index.js"></script>
 </html>
