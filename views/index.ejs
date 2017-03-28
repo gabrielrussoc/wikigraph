@@ -1,34 +1,85 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/index.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <form action="/path" method="get">
-        <label>
-            Origem
-            <input id="from" name="from" type="text"/>
-        </label>
-        <label>
-            Destino
-            <input id="to" name="to" type="text"/>
-        </label>
-        <input type="submit" value="Buscar"/>
-    </form>
-    <% if(typeof path !== 'undefined') { %>
-    <ul>
-      <% path.forEach(function(article) { %>
-        <li>
-          <%= article %>
-        </li>
-      <% }); %>
-    </ul>
-    <% } %>
-  </body>
-  <script src="/javascripts/jquery-3.1.1.min.js"></script>
-  <script src="/javascripts/jquery.autocomplete.js"></script>
-  <script src="/javascripts/index.js"></script>
+    <head>
+        <title><%= title %></title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel='stylesheet' href='/stylesheets/autocomplete.css' />
+        <link rel='stylesheet' href='/stylesheets/bulma.css' />
+        <link rel='stylesheet' href='/stylesheets/font-awesome.css' />
+    </head>
+    <body>
+        <section class="hero is-fullheight">
+            <div class="hero-head">
+                <div class="container">
+                    <nav class="nav has-shadow">
+                        <div class="container">
+                            <div class="nav-left">
+                                <a class="nav-item" href="/">
+                                    <%= title %>
+                                </a>
+                            </div>
+                            <div class="nav-right nav-menu">
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="hero-body">
+                <div class="container has-text-centered">
+                    <h1 class="title is-1">
+                        <%= title %>
+                    </h1>
+                    <h2 class="subtitle is-4">
+                        Qual a distância entre dois artigos da Wikipédia?
+                    </h2>
+                    <form action="/path" method="get">
+                        <div class="columns">
+                            <div class="field column">
+                                <p class="control">
+                                    <input id="from" class="input is-large" name="from" type="text" placeholder="Origem">
+                                </p>
+                            </div>
+                            <div class="field column">
+                                <p class="control">
+                                    <input id="to" class="input is-large" name="to" type="text" placeholder="Destino">
+                                </p>
+                            </div>
+                        </div>
+                        <input class="button is-primary is-large" type="submit" value="Buscar"/>
+                    </form>
+                    <div class="section">
+                        <% if(typeof success !== 'undefined') { %>
+                            <% if(success == true) { %>
+                                <ul>
+                                    <% path.forEach(function(article) { %>
+                                        <li>
+                                            <h3 class="title is-5">
+                                                <a target="_blank" href="<%= 'https://pt.wikipedia.org/wiki/' + encodeURI(article) %>">
+                                                    <%= article %>
+                                                </a>
+                                            </h3>
+                                        </li>
+                                    <% }); %>
+                                </ul>
+                            <% } else { %>
+                                <h3 class="title is-5">Não encontrei um caminho :(</h3>
+                            <% } %>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-foot">
+                <div class="container has-text-centered">
+                    <p>Com <i class="fa fa-heart"></i> por <a target="_blank" href="https://github.com/gabrielrussoc/">gabrielrussoc</a></p>
+                </div>
+            </div>
+        </section>
+    </body>
+    <script src="/javascripts/jquery-3.1.1.min.js"></script>
+    <script src="/javascripts/jquery.autocomplete.js"></script>
+    <script src="/javascripts/index.js"></script>
 </html>

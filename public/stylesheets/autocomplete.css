@@ -1,14 +1,7 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-a {
-  color: #00B7FF;
-}
-
 .autocomplete-suggestions {
-    border: 1px solid #999;
+    border: 1px solid #DBDBDB;
+    color: inherit
+    border-radius: 2px;
     background: #FFF;
     overflow: auto;
 }
@@ -24,8 +17,8 @@ a {
 }
 
 .autocomplete-suggestions strong {
-    font-weight: normal;
-    color: #3399FF;
+    font-weight: bold;
+    color: #00d1b2;
 }
 
 .autocomplete-group {
@@ -35,4 +28,5 @@ a {
 .autocomplete-group strong {
     display: block;
     border-bottom: 1px solid #000;
+    border-radius: 20px;
 }

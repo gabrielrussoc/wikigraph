@@ -18,7 +18,9 @@ router.get('/', function(req, res, next) {
 router.get('/path', function(req, res, next) {
     var from = req.query.from;
     var to = req.query.to;
-    res.render('index', { title: 'WikiGraph', path: graph.path(from, to) });
+    var path = graph.path(from, to);
+    var success = path.length > 0 && path[0] != '';
+    res.render('index', { title: 'WikiGraph', path: path, success: success });
 });
 
 router.get('/autocomplete', function(req, res, next) {
