@@ -11,7 +11,7 @@
     </head>
     <body>
         <section class="hero is-fullheight">
-            <div class="hero-head">
+            <!-- <div class="hero-head">
                 <div class="container">
                     <nav class="nav has-shadow">
                         <div class="container">
@@ -25,7 +25,7 @@
                         </div>
                     </nav>
                 </div>
-            </div>
+            </div> -->
 
             <div class="hero-body">
                 <div class="container has-text-centered">
@@ -35,6 +35,11 @@
                     <h2 class="subtitle is-4">
                         Qual a distância entre dois artigos da Wikipédia?
                     </h2>
+                    <% if(t_game) { %>
+                    <h3 class="subtitle is-6">
+                        Highscore local: <%= t_highscore %>
+                    </h3>
+                    <% } %>
                     <form action="/path" method="get">
                         <div class="columns">
                             <div class="field column">
@@ -48,10 +53,14 @@
                                 </p>
                             </div>
                         </div>
+                        <input type="hidden" name="t_inline_message_id" value="<%= t_inline_message_id %>">
+                        <input type="hidden" name="t_user_id" value="<%= t_user_id %>"/>
                         <input class="button is-primary is-large" type="submit" value="Buscar"/>
                     </form>
                     <div class="section">
                         <% if(typeof success !== 'undefined') { %>
+                            <span class="tag is-primary is-large">Comprimento: <%= path.length - 1 %></span>
+                            <hr>
                             <% if(success == true) { %>
                                 <ul>
                                     <% path.forEach(function(article) { %>
