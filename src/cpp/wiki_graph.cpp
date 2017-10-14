@@ -17,7 +17,8 @@ WikiGraph::WikiGraph(std::string pages_path, std::string links_path) {
     if(pages.is_open()) {
         while(std::getline(pages, line)) id[line] = c++;
     } else {
-        throw std::invalid_argument(std::string("Falha na leitura das paginas"));
+	// Failed to read pages
+        throw std::invalid_argument(std::string("Falha na leitura das paginas (Failed to read pages)"));
     }
 
     this->V = c;
@@ -30,7 +31,8 @@ WikiGraph::WikiGraph(std::string pages_path, std::string links_path) {
         int u, v;
         while(links >> u >> v) add_arc(u, v);
     } else {
-        throw std::invalid_argument(std::string("Falha na leitura dos links"));
+	// Failed reading links
+        throw std::invalid_argument(std::string("Falha na leitura dos links (Failed reading links)"));
     }
 
     pages.close();
@@ -42,6 +44,7 @@ WikiGraph::~WikiGraph() {
     delete[] name;
 }
 
+// Find path
 std::vector<std::string> WikiGraph::path(std::string &from_name, std::string &to_name) {
     std::vector<int> dist(V);
     std::vector<int> parent(V);
@@ -80,6 +83,7 @@ std::vector<std::string> WikiGraph::path(std::string &from_name, std::string &to
     return ret;
 } 
 
+// Add an direct edge
 void WikiGraph::add_arc(int from, int to) {
     adj[from].push_back(to);
 }
