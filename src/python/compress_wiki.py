@@ -13,8 +13,8 @@ import sys
 # fromid:linkname
 def compress(pages, links):
     print('Comprimindo...')
-    fp = open('wiki_pages_compressed.txt', 'w')
-    fl = open('wiki_links_compressed.txt', 'w')
+    fp = open('wiki_pages_compressed.txt', 'w', encoding='utf-8')
+    fl = open('wiki_links_compressed.txt', 'w', encoding='utf-8')
     nid = {}
     ids = {}
     c = 1
@@ -39,13 +39,13 @@ def main():
         sys.exit(-1)
 
     try:
-        pages = open(sys.argv[1], 'r')
+        pages = open(sys.argv[1], 'r', encoding='utf-8')
     except:
         sys.stderr.write('Falha ao abrir o arquivo de paginas\n')
         sys.exit(-1)
 
     try:
-        links = open(sys.argv[2], 'r')
+        links = open(sys.argv[2], 'r', encoding='utf-8')
     except:
         sys.stderr.write('Falha ao abrir o arquivo de paginas\n')
         sys.exit(-1)

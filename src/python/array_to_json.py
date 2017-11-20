@@ -13,7 +13,7 @@ def main():
         sys.exit(-1)
 
     try:
-        array_file = open(sys.argv[1], 'r')
+        array_file = open(sys.argv[1], 'r', encoding='utf-8')
     except:
         sys.stderr.write('Falha ao abrir o arquivo\n')
         sys.exit(-1)

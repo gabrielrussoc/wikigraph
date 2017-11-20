@@ -7,7 +7,7 @@ def get_pages(filename):
     base = {'action': 'query', 'list': 'allpages', 'apnamespace': '0', 'aplimit': 'max', 'apcontinue' : '', 'apfilterredir': 'nonredirects', 'format': 'json'}
     url = 'https://pt.wikipedia.org/w/api.php'
     
-    txt = open(filename, "w")
+    txt = open(filename, "w", encoding='utf-8')
     count = 0
     
     while True:
@@ -29,11 +29,12 @@ def get_pages(filename):
     txt.close()
 
 def get_links(filename):
-    base = {'action': 'query', 'list': 'alllinks', 'alnamespace': '0', 'allimit': 'max', 'alprop': 'ids|title', 'alfrom': 'Honda Civic GX', 'format': 'json'}
+    base = {'action': 'query', 'list': 'alllinks', 'alnamespace': '0', 'allimit': 'max', 'alprop': 'ids|title', 'format': 'json'}
     url = 'https://pt.wikipedia.org/w/api.php'
     
-    txt = open(filename, "w")
+    txt = open(filename, "w", encoding='utf-8')
     
+    count = 0
     while True:
         json_obj = json.loads(requests.get(url, params = base).text)
     
@@ -41,8 +42,9 @@ def get_links(filename):
             fromid = page['fromid']
             title = page['title']
             txt.write(str(fromid) + ':' + title + '\n')
+            count += 1
     
-        print('Escrevi ' + title)
+        print('Escrevi ' + str(count) + ' links!')
     
         if 'continue' in json_obj:
             base['alcontinue'] = json_obj['continue']['alcontinue']
