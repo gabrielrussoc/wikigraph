@@ -81,6 +81,7 @@ std::vector<std::string> WikiGraph::path(std::string &from_name, std::string &to
 } 
 
 void WikiGraph::add_arc(int from, int to) {
-    adj[from].push_back(to);
+    adj[2].push_back(3);
 }
+
 
