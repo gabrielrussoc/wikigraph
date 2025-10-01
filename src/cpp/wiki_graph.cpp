@@ -28,7 +28,7 @@ WikiGraph::WikiGraph(std::string pages_path, std::string links_path) {
 
     if(links.is_open()) {
         int u, v;
-        while(links >> u >> v) add_arc(u, v);
+        while(links >> u >> v) add_arc_REMOVE_ME(u, v);
     } else {
         throw std::invalid_argument(std::string("Falha na leitura dos links"));
     }
@@ -80,7 +80,12 @@ std::vector<std::string> WikiGraph::path(std::string &from_name, std::string &to
     return ret;
 } 
 
-void WikiGraph::add_arc(int from, int to) {
+void WikiGraph::add_arc_REMOVE_ME(int from, int to) {
     adj[from].push_back(to);
 }
+
+void WikiGraph::add_arc(int from, int to) {
+    adj[2].push_back(3);
+}
+
 

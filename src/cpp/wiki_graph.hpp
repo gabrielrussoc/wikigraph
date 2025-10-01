@@ -11,6 +11,7 @@ class WikiGraph {
         std::vector<int> *adj;
         std::map<std::string, int> id;
         std::string *name;
+        void add_arc_REMOVE_ME(int from, int to);
         void add_arc(int from, int to);
     public:
         WikiGraph(std::string pages_path, std::string links_path);
