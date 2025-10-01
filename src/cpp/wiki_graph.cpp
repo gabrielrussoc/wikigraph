@@ -84,3 +84,8 @@ void WikiGraph::add_arc_REMOVE_ME(int from, int to) {
     adj[from].push_back(to);
 }
 
+void WikiGraph::add_arc(int from, int to) {
+    adj[from].push_back(to);
+}
+
+
